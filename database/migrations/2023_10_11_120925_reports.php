@@ -13,12 +13,9 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('vehicle_booking_id');
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('vehicle_booking_id')->constrained('vehicle_bookings');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
-
-            $table->foreign('vehicle_booking_id')->constrained('vehicle_bookings');
-            $table->foreign('user_id')->constrained('users');
         });
     }
 
