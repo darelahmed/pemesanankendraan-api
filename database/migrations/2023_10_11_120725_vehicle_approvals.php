@@ -17,8 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('vehicle_booking_id')->references('id')->on('vehicle_bookings');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('vehicle_booking_id')->constrained('vehicle_bookings');
+            $table->foreign('user_id')->constrained('users');
         });
     }
 

@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('status'); // Status pemesanan (Menunggu persetujuan, Disetujui, Ditolak, dll)
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('vehicle_id')->references('id')->on('vehicles');
+            $table->foreign('user_id')->constrained('users');
+            $table->foreign('vehicle_id')->constrained('vehicles');
         });
     }
 
