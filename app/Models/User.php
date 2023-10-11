@@ -17,6 +17,13 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    protected $guarded = [
+        'id',
+        'role',
+        'created_at',
+        'updated_at',
+    ];
     protected $fillable = [
         'name',
         'email',
@@ -31,6 +38,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -42,4 +51,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function vehicleBookings()
+    {
+        return $this->hasMany(VehicleBooking::class, 'user_id');
+    }
+
+    public function vehicleApprovals()
+    {
+        return $this->hasMany(VehicleApproval::class, 'user_id');
+    }
 }
