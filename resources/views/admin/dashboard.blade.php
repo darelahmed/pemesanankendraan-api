@@ -7,6 +7,8 @@
     <title>Dashboard</title>
 </head>
 <body>
+    INI DASHBOARD ADMIN
+    <a href="{{ route('profile.page', $profile->id) }}">Profile</a>
     <form action="{{ route('logout') }}" method="POST">
         @csrf
         <button type="submit">Logout</button>

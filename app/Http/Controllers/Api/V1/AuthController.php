@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -62,6 +64,42 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'Bearer',
         ], 200);
+    }
+
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|min:3|max:255',
+            'email' => 'required|email|unique:users,email', // Validasi email unik
+            'password' => 'required|string|min:8',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'Validation error',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        try{
+            DB::beginTransaction();
+            $user = User::create([
+                'name' => $request->name,
+                'email' => strtolower($request->email),
+                'password' => Hash::make($request->password),
+            ]);
+            DB::commit();
+            return response()->json([
+                'message' => 'User successfully registered',
+                'data' => $user
+            ], 201);
+        }catch(\Throwable $e){
+            DB::rollback();
+            return response()->json([
+                'message' => 'User registration failed',
+                'errors' => $e->getMessage()
+            ], 500);
+        }
     }
 
     public function logout(Request $request)
