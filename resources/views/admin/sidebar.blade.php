@@ -1,12 +1,12 @@
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
     <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
-            <li class="text-muted text-uppercase">
+            {{-- <li class="text-muted text-uppercase">
                 <a class="nav-link" aria-current="page" href="">
                     <span class="align-text-bottom"></span>
                     Admin Pemesanan Kendaraan
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('vehicle.page') }}" selected>
                     <span data-feather="file" class="align-text-bottom"></span>
@@ -19,12 +19,12 @@
                     Vehicle Booking
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="{{ route('vehicleapproval.page') }}">
                     <span data-feather="shopping-cart" class="align-text-bottom"></span>
                     Vehicle Approval
                 </a>
-            </li>
+            </li> --}}
         </ul>
 
         <h6
