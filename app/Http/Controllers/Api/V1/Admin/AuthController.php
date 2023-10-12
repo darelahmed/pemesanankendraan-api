@@ -60,7 +60,7 @@ class AuthController extends Controller
 
         if (auth()->attempt($credentials)) {
             $user = auth()->user();
-            return redirect()->route('dashboard.page');
+            return redirect()->route('vehicle.page');
         } else {
             return redirect()->back()->withErrors(['password' => 'Password is incorrect']);
         }

@@ -18,7 +18,7 @@ use App\Http\Controllers\Api\V1\Admin\VehicleController;
 */
 
 Route::get('/', function () {
-    return redirect()->route('dashboard.page');
+    return redirect()->route('vehicle.page');
 });
 
 Route::prefix('auth')->group(function () {
