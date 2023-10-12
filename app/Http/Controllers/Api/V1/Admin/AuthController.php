@@ -40,6 +40,7 @@ class AuthController extends Controller
         ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;
+        return redirect()->route('login.page');
 
         return response()->json([
             'message' => 'User successfully registered',
