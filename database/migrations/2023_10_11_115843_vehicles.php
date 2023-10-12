@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
             $table->string('vehicle_name');
+            $table->string('driver_name');
             $table->float('fuel_consumption');
             $table->string('service_schedule');
             $table->timestamps();
