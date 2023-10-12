@@ -1,3 +1,5 @@
+@extends('admin.dashboard')
+@section('container')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,14 +9,14 @@
     <title>Edit Profile</title>
 </head>
 <body>
-    EDIT PROFILE
-    <a href="{{ route('profile.page', $profile->id) }}">Back</a>
+    <h1 class="text-muted text-uppercase mt-4 mb-3">Edit Profile</h1>
     <form action="{{ route('profile.post', $profile->id) }}" method="post">
         @csrf
-        <input type="text" name="name" value="{{ $profile->name }}" required>
-        <input type="email" name="email" value="{{ $profile->email }}" required>
-        <input type="password" name="password" placeholder="password" required>
-        <button type="submit">Update</button>
+        <input type="text" class="form-control d-flex p-2 mb-3" name="name" value="{{ $profile->name }}" required>
+        <input type="email" class="form-control d-flex p-2 mb-3" name="email" value="{{ $profile->email }}" required>
+        <input type="password" class="form-control d-flex p-2 mb-3" name="password" placeholder="password" required>
+        <button type="submit" class="btn btn-outline-danger">Update</button>
     </form>
 </body>
 </html>
+@endsection
