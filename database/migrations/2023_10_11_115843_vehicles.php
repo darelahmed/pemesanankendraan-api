@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('vehicle_name');
             $table->string('driver_name');
             $table->float('fuel_consumption');
-            $table->string('service_schedule');
+            $table->enum('service_schedule', ['Daily', 'Weekly', 'Monthly', 'Yearly'])->default('Monthly');
             $table->timestamps();
         });
     }
