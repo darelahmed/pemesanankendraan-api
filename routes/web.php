@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\Admin\AuthController;
+use App\Http\Controllers\Api\V1\Admin\ProfileController;
 use App\Http\Controllers\Api\V1\Admin\DashboardController;
 
 /*
@@ -29,4 +30,9 @@ Route::prefix('auth')->group(function () {
 
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.page');
+    Route::prefix('profile')->group(function () {
+        Route::get('/show', [ProfileController::class, 'show'])->name('profile.page');
+        Route::get('/update/show', [ProfileController::class, 'detail'])->name('update.page');
+        Route::post('/update', [ProfileController::class, 'update'])->name('profile.post');
+    });
 });
