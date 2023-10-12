@@ -40,7 +40,7 @@ class AuthController extends Controller
         ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;
-        return redirect()->route('login.page');
+        return redirect()->route('login.page')->with('success', 'Register success');
 
         return response()->json([
             'message' => 'User successfully registered',
@@ -60,7 +60,7 @@ class AuthController extends Controller
 
         if (auth()->attempt($credentials)) {
             $user = auth()->user();
-            return redirect()->route('vehicle.page');
+            return redirect()->route('vehicle.page')->with('success', 'Login success');
         } else {
             return redirect()->back()->withErrors(['password' => 'Password is incorrect']);
         }
@@ -69,6 +69,6 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         auth()->logout();
-        return redirect()->route('login.page');
+        return redirect()->route('login.page')->with('success', 'Logout success');
     }
 }
