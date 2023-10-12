@@ -50,6 +50,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('/all', [VehicleBookingController::class, 'index'])->name('vehiclebooking.page');
         Route::get('/edit/{vehicle_booking}', [VehicleBookingController::class, 'edit'])->name('review.page');
         Route::post('/update/{vehicle_booking}', [VehicleBookingController::class, 'update'])->name('review.post');
+        Route::get('/export', [VehicleBookingController::class, 'exportExcel'])->name('export.page');
     });
     Route::prefix('vehicle-approval')->group(function () {
         Route::get('/all', [VehicleApprovalController::class, 'index'])->name('vehicleapproval.page');
