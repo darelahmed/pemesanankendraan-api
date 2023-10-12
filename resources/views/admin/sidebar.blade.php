@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('vehicleapproval.page') }}">
                     <span data-feather="shopping-cart" class="align-text-bottom"></span>
                     Vehicle Approval
                 </a>
@@ -41,12 +41,6 @@
                     Profile
                 </a>
             </li>
-        </ul>
-        <ul class="nav flex-column mb-1">
-            <form action="{{ route('logout') }}" method="POST">
-                @csrf
-                <button type="submit" class="btn btn-danger">Logout</button>
-            </form>
         </ul>
     </div>
 </nav>
