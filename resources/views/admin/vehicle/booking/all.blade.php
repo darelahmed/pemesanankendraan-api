@@ -21,6 +21,9 @@
         </thead>
         <tbody>
             <div class="row">
+                <div class="col-lg-7 mb-3">
+                    <a class="btn btn-outline-success mt-3" href="{{ route('export.page') }}">Download Data</a>
+                </div>
                 @if ($vehicle_booking->count())
                     @foreach ($vehicle_booking as $vehicle_bookings)
                         <tr>

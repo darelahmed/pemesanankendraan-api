@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\VehicleBooking;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ExportVehicleBooking;
 
 class VehicleBookingController extends Controller
 {
@@ -33,5 +35,10 @@ class VehicleBookingController extends Controller
         
         $vehicle_booking->update($validateData);
         return redirect()->route('vehiclebooking.page')->with('success', 'Vehicle Booking has been review.');
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new ExportVehicleBooking, 'vehicle_booking.xlsx');
     }
 }
