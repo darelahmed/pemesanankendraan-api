@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('vehicle_id')->constrained('vehicles');
-            $table->integer('approval_level');
-            $table->string('status'); // Status pemesanan (Menunggu persetujuan, Disetujui, Ditolak, dll)
+            $table->enum('approval_level', ['Pending','Bad','Normal','Good'])->default('Pending');
+            $table->enum('status', ['Pending','Accepted', 'Rejected'])->default('Pending');
             $table->timestamps();
         });
     }
