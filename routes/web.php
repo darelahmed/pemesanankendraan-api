@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\V1\Admin\ProfileController;
 use App\Http\Controllers\Api\V1\Admin\DashboardController;
 use App\Http\Controllers\Api\V1\Admin\VehicleController;
 use App\Http\Controllers\Api\V1\Admin\VehicleBookingController;
+use App\Http\Controllers\Api\V1\Admin\VehicleApprovalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,5 +50,13 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('/all', [VehicleBookingController::class, 'index'])->name('vehiclebooking.page');
         Route::get('/edit/{vehicle_booking}', [VehicleBookingController::class, 'edit'])->name('review.page');
         Route::post('/update/{vehicle_booking}', [VehicleBookingController::class, 'update'])->name('review.post');
+    });
+    Route::prefix('vehicle-approval')->group(function () {
+        Route::get('/all', [VehicleApprovalController::class, 'index'])->name('vehicleapproval.page');
+        Route::get('/create', [VehicleApprovalController::class, 'create'])->name('createapproval.page');
+        Route::post('/add', [VehicleApprovalController::class, 'store'])->name('createapproval.post');
+        Route::delete('/delete/{vehicle_approval}', [VehicleApprovalController::class, 'destroy'])->name('vehicleapproval.delete');
+        Route::get('/edit/{vehicle_approval}', [VehicleApprovalController::class, 'edit'])->name('editapproval.page');
+        Route::post('/update/{vehicle_approval}', [VehicleApprovalController::class, 'update'])->name('editapproval.post');
     });
 });
