@@ -8,7 +8,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('vehicle.page') }}">
+                <a class="nav-link" href="{{ route('vehicle.page') }}" selected>
                     <span data-feather="file" class="align-text-bottom"></span>
                     Vehicle
                 </a>
