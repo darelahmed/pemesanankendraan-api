@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\V1\Admin\AuthController;
 use App\Http\Controllers\Api\V1\Admin\ProfileController;
 use App\Http\Controllers\Api\V1\Admin\DashboardController;
 use App\Http\Controllers\Api\V1\Admin\VehicleController;
+use App\Http\Controllers\Api\V1\Admin\VehicleBookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,5 +44,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::delete('/delete/{vehicle}', [VehicleController::class, 'destroy'])->name('vehicle.delete');
         Route::get('/edit/{vehicle}', [VehicleController::class, 'edit'])->name('edit.page');
         Route::post('/update/{vehicle}', [VehicleController::class, 'update'])->name('edit.post');
+    });
+    Route::prefix('vehicle-booking')->group(function () {
+        Route::get('/all', [VehicleBookingController::class, 'index'])->name('vehiclebooking.page');
+        Route::get('/edit/{vehicle_booking}', [VehicleBookingController::class, 'edit'])->name('review.page');
+        Route::post('/update/{vehicle_booking}', [VehicleBookingController::class, 'update'])->name('review.post');
     });
 });
