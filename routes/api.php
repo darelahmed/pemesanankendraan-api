@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\Client\ProfileController;
 use App\Http\Controllers\Api\V1\Client\VehicleBookingController;
+use App\Http\Controllers\Api\V1\Client\VehicleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,9 @@ Route::prefix('v1')->group(function () {
     Route::prefix('profile')->middleware('auth:sanctum')->group(function () {
         Route::get('/show', [ProfileController::class, 'show']);
         Route::post('/update', [ProfileController::class, 'update']);
+    });
+    Route::prefix('vehicle')->middleware('auth:sanctum')->group(function () {
+        Route::get('/all', [VehicleController::class, 'all']);
     });
     Route::prefix('vehicle-booking')->group(function () {
         Route::get('/all', [VehicleBookingController::class, 'all'])->middleware('auth:sanctum');
